@@ -1,0 +1,14 @@
+<h2 class="text-center">Our Team</h2>
+
+<div class="container">
+    <div class="row" style="padding-bottom: 15px">
+        <div class="card col-sm-3"  *ngFor="let emp of employees">
+            <img class="card-img-top" src="assets/img/{{emp._id}}.png" alt="Card image cap" routerLink="/employee/{{emp._id}}">
+            <div class="card-body">
+                <h5 class="card-title">{{emp.employee_name}}</h5>
+                <p class="card-text">{{emp.employee_category}}</p>
+                <a routerLink="/employee/{{emp._id}}" class="btn btn-primary">Check profile</a>
+            </div>
+        </div>
+     </div>
+</div>
