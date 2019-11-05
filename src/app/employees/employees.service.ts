@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { Employee } from "../employee";
+import { catchError } from "rxjs/operators";
+import { Observable, throwError } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class EmployeesService {
   apiUrl = "/api/v1/users/";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getEmployees() {
     return this.http.get(`/api/v1/users/`);
@@ -17,4 +19,15 @@ export class EmployeesService {
     return this.http.get(`/api/v1/users/${id}`);
   }
 
+  setEmployee(employee) {
+    return this.http.post(`/api/v1/users`, employee).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(error.message || "server error");
+      })
+    );
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server error");
+  }
 }

@@ -7,18 +7,23 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeesDetaillsComponent } from './employees-detaills/employees-detaills.component';
+import { EmployeesAddComponent } from './employees-add/employees-add.component';
+
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     EmployeesComponent,
-    EmployeesDetaillsComponent
+    EmployeesDetaillsComponent,
+    EmployeesAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],
