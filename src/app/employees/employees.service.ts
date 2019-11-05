@@ -20,11 +20,15 @@ export class EmployeesService {
   }
 
   setEmployee(employee) {
-    return this.http.post(`/api/v1/users`, employee).pipe(
-      catchError((error: HttpErrorResponse) => {
-        return throwError(error.message || "server error");
-      })
-    );
+    console.log(employee);
+    return this.http
+      .post("/api/v1/users/", employee)
+
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError(error.message || "server error");
+        })
+      );
   }
 
   errorHandler(error: HttpErrorResponse) {
