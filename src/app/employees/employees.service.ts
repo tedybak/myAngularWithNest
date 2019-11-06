@@ -22,7 +22,7 @@ export class EmployeesService {
   setEmployee(employee) {
     console.log(employee);
     return this.http
-      .post("/api/v1/users/", employee)
+      .post(`/api/v1/users/`, employee)
 
       .pipe(
         catchError((error: HttpErrorResponse) => {
